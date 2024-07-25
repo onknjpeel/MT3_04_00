@@ -449,9 +449,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		sphere = { ball.position,ball.radius };
 		end = Transform(Transform(sphere.center, worldViewProjectionMatrix), viewportMatrix);
 
-		if (keys[DIK_SPACE] && preKeys[DIK_SPACE] == 0) {
+		ImGui::Begin("Window");
+		if (ImGui::Button("start", { 60,30 })) {
 			ball.velocity.x += 5.0f;
 		}
+		ImGui::End();
 
 		diff = ball.position - spring.anchor;
 		length = Length(diff);
